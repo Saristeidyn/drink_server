@@ -1,17 +1,19 @@
 services:
   mysql:
-    image: mysql_drink_server_image
+    image: mysql
     container_name: mysql_drink_server_container # Change this for specific exam needs
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DB}
     volumes:
-      - mysql_drink_server:/var/lib/mysql
+      - mysql_drink_serverdb:/var/lib/mysql
 
   drink_server:
-    image: saraymartinez002/drink_server
-    container_name: DrinkServer
+    image: saraymartinez002/drink_server:latest
+    container_name: drink_server_container
+    restart: always
     ports:
       - "3005:3000"
     environment:
@@ -23,24 +25,4 @@ services:
       - mysql
 
 volumes:
-  mysql_drink_server:
-
-
-
-
-
-
-
-# services:
-#   mysql:
-#     image: mysql
-#     container_name: mysql
-#     ports:
-#       - "3306:3306"
-#     environment: 
-#       MYSQL_ROOT_PASSWORD: 12345
-#     volumes:
-#       - mysql_drink_server:/var/lib/mysql
-
-# volumes:
-#   mysql_drink_server:
+  mysql_drink_serverdb:
