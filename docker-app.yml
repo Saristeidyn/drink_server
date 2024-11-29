@@ -8,21 +8,21 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DB}
     volumes:
-      - mysql_drink_serverdb:/var/lib/mysql
+      - mysql_drinkdb:/var/lib/mysql
 
-  drink_server:
-    image: saraymartinez002/drink_server:latest
-    container_name: drink_server_container
-    restart: always
-    ports:
-      - "3005:3000"
-    environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DB: ${MYSQL_DB}
-      MYSQL_HOST: mysql
-    depends_on:
-      - mysql
+  # drink_server:
+  #   image: saraymartinez002/drink_server:latest
+  #   container_name: drink_server_container
+  #   restart: always
+  #   ports:
+  #     - "3005:3000"
+  #   environment:
+  #     MYSQL_USER: ${MYSQL_USER}
+  #     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #     MYSQL_DB: ${MYSQL_DB}
+  #     MYSQL_HOST: mysql
+  #   depends_on:
+  #     - mysql
 
 volumes:
-  mysql_drink_serverdb:
+  mysql_drinkdb:
