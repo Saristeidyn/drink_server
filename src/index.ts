@@ -4,11 +4,15 @@ import { dbConnection } from "./db/init";
 import { User } from "./db/models/user.models";
 import { Product } from "./db/models/product.models";
 import { Category } from "./db/models/category.models";
+import path from 'path';
+
 
 const app = express();
 
 app.use(express.json());
 dbConnection(); 
+
+
 ////////////////////////////////////////////////////
 // ON TO USER
 // REST FRO USER
